@@ -76,6 +76,6 @@ class ConsumerVpcStack(Stack):
             vpc=self.vpc,
             service=ec2.InterfaceVpcEndpointService(provider_endpoint_service.vpc_endpoint_service_name),
             subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED),
-            private_dns_enabled=True,
+            private_dns_enabled=False,  # プライベートDNSを無効に設定
             security_groups=[self.endpoint_sg]
         )
