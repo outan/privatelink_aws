@@ -144,9 +144,9 @@ class ProviderVpcStack(Stack):
         self.ec2_instance.add_user_data(
             "yum update -y",
             "yum install -y httpd",
-            "sudo systemctl start httpd",
-            "sudo systemctl enable httpd",
-            "sudo chmod -R 777 /var/www/html",
+            "systemctl start httpd",
+            "systemctl enable httpd",
+            "chmod -R 777 /var/www/html",
             "export AWS_DEFAULT_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/region)",
             f"aws s3 cp s3://{self.bucket.bucket_name}/page.html /var/www/html/index.html",
         )
