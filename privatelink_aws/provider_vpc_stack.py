@@ -147,5 +147,6 @@ class ProviderVpcStack(Stack):
             "sudo systemctl start httpd",
             "sudo systemctl enable httpd",
             "sudo chmod -R 777 /var/www/html",
+            "export AWS_DEFAULT_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/region)",
             f"aws s3 cp s3://{self.bucket.bucket_name}/page.html /var/www/html/index.html",
         )
