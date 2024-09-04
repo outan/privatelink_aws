@@ -144,9 +144,8 @@ class ProviderVpcStack(Stack):
         self.ec2_instance.add_user_data(
             "yum update -y",
             "yum install -y httpd",
-            "chown -R /var/www/html",
             "sudo systemctl start httpd",
             "sudo systemctl enable httpd",
+            "sudo chmod -R 777 /var/www/html",
             f"aws s3 cp s3://{self.bucket.bucket_name}/page.html /var/www/html/index.html",
-
         )
